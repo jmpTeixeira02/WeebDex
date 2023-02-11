@@ -11,6 +11,8 @@ export default function(db) {
         const websites = Object.values(scrapperData)
         for (const website of websites){
             const entries = await scrapper(website)
+            if(!entries)
+                continue
             for (const entrie of entries){
                 await processEntry(entrie, table, dataBuilder, updates)
             }

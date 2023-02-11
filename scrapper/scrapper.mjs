@@ -26,6 +26,8 @@ async function webFetcher(website){
                 return serie
         })
     }
+    if(error)
+        console.log(error)
 }
 
 export default webFetcher

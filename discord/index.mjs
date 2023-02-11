@@ -30,7 +30,7 @@ client.once(Events.ClientReady, async c => {
 
 	db.init(manwhaOptions.table, dbTableOptions.discord.table)
 
-	while(true){
+	const looper = async () => {
 		const res = await events.webScraping(
 			manwhaOptions.table.name, 
 			manwhaOptions.entry_options
@@ -38,8 +38,9 @@ client.once(Events.ClientReady, async c => {
 		for (const result of res){
 			messageSender.sendMessage(result, dbTableOptions.discord.table.name)
 		}
-		await sleep(10*1000 * 1)
+		setTimeout(looper, 1000*60*10);
 	}
+	looper()
 });
 
 
