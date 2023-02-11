@@ -1,0 +1,25 @@
+{
+  "name": "weebdex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmpTeixeira02/WeebDex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmpTeixeira02/WeebDex/issues"
+  },
+  "homepage": "https://github.com/jmpTeixeira02/WeebDex#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "discord.js": "^14.7.1",
+    "node-fetch": "^3.3.0",
+    "pg": "^8.9.0"
+  }
+}
