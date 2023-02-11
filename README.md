@@ -1,6 +1,5 @@
 # WeebDex
 <img src="./resources/icon.png"  width="200" height="150">
-<br></br>
 
 **WeebDex** is a [Discord](https://discord.com/) bot using [discord.js](https://discord.js.org/#/) created by [João Teixeira](https://github.com/jmpTeixeira02)
 
