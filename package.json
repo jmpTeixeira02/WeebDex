@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jmpTeixeira02/WeebDex#readme",
   "dependencies": {
+    "chalk": "^5.2.0",
     "cheerio": "^1.0.0-rc.12",
     "discord.js": "^14.7.1",
     "node-fetch": "^3.3.0",

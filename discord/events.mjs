@@ -28,6 +28,7 @@ export default function(db) {
         // New entrie in the DB
         if(res.rows.length == 0){
             insertEntry(data.insert, table)
+            updates.push(entrie)
             return
         }
         // Update entry

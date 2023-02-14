@@ -36,7 +36,7 @@ client.once(Events.ClientReady, async c => {
 			manwhaOptions.entry_options
 		)
 		for (const result of res){
-			messageSender.sendMessage(result, dbTableOptions.discord.table.name)
+			await messageSender.sendMessage(result, dbTableOptions.discord.table.name)
 		}
 		setTimeout(looper, 1000*60*10);
 	}
