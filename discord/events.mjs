@@ -32,7 +32,7 @@ export default function(db) {
             return
         }
         // Update entry
-        if(res.rows[0].chapter < entrie.chapter){
+        if(Number(res.rows[0].chapter) < Number(entrie.chapter)){
             updateEntry(data.update, table)
             if (res.rows[0].publish)
                 updates.push(entrie)

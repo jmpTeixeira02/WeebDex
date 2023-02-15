@@ -16,8 +16,11 @@ Currently all the data is being stored in [PostgreSQL](https://www.postgresql.or
 ## Features
 - **Current Channel** - Displays the current announcement channel
 - **Set Channel** - Set the selected channel to be the new announcement channel
+- **Update Publish Status** - Given a title name, update the publish status in order to enable/disable the message informing new releases
+
 
 ## W.I.P
-- **Update Publish Status** - Given a title name, update the publish status in order to enable/disable the message informing new releases
+- **Check Title**
+- **List titles filtered**
 - **Individual Notifications** - Each user can subscribe to different titles and they get mentioned when a new release exists 
 - **Random** - Get a random manwha

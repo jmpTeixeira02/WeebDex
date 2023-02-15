@@ -8,13 +8,14 @@ async function webFetcher(website){
     const [data, error] = await tryCatchHandler(fetch, website.uri)
     if (!data.ok){
         console.log(chalk.red(`${website.uri} is not ok with status code ${data.status}`))
+        return
     }
     const body = await data.text()
     const $ = cheerio.load(body)
 
 
     const title_cards = $(website.title_card)
-    let series = [{}]
+    let series = []
     title_cards.each(function(_,  el){
         const chapter = website.parser($, el).chapter
         series.push({
@@ -29,5 +30,6 @@ async function webFetcher(website){
             return serie
     })        
 }
+
 
 export default webFetcher
