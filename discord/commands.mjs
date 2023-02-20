@@ -1,8 +1,5 @@
 import { SlashCommandBuilder } from 'discord.js';
 
-
-
-
 export default function(db) {
 
     const ping = {
@@ -102,27 +99,38 @@ export default function(db) {
         }
     }
 
-    // const show_titles = {
-    //     data: new SlashCommandBuilder()
-    //         .setName('show_titles')
-    //         .setDescription('Show the titles that are currently being monitored')
-    //         .addBooleanOption(option =>
-    //             option.setName('publish')
-    //                 .setDescription("Show titles that are being published or not")
-    //                 .setRequired(true)),
-    //     async execute(interaction, dataOptions){
-    //         const table = dataOptions.manwha.table.name
-    //         const input = interaction.options.getString('publish')
+    const remove_title = {
+        data: new SlashCommandBuilder()
+        .setName('remove_title')
+        .setDescription('Removes a title from the database')
+        .addStringOption(option =>
+            option.setName('title')
+                .setDescription("The title desired to be removed")
+                .setRequired(true)),
+    async execute(interaction, dataOptions){
+        const table = dataOptions.manwha.table.name
+        const input = interaction.options.getString('title')
 
-    //         const [resSelect, errorSelect] = await db.select(table, {name: input})
-    //     }
-    // }
+        const [res, error] = await db.remove(table, {name: input})
+        if (resSelect.rows.length != 0 || errorSelect){
+            await interaction.reply('This title has already been added!')
+        }else{
+            const title = resSelect.rows[0]
+            const [res, error] = await db.insert(table, {publish: true, name:input, chapter:-1})
+            if (res)
+                await interaction.reply(`This title has been added and is gonna be published!`)
+            else
+            await interaction.reply(`An error has ocurred!`)
+
+        }
+    }
+    }
 
     return {
-        ping: ping, 
         set_channel: set_channel, 
         current_channel: current_channel, 
         update_publishing: update_publishing,
-        add_title: add_title
+        add_title: add_title,
+        remove_title: remove_title
     }
 } 

@@ -42,7 +42,7 @@ export default {
                     condition: {name: title}
                 },
                 insert: {
-                    values: {name: title, chapter: entry.chapter, publish: true}
+                    values: {name: title, chapter: entry.chapter, publish: false}
                 },
                 update: {
                     values: {chapter: entry.chapter},

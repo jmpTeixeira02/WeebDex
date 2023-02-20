@@ -27,13 +27,12 @@ export default function(db) {
         const [res, error] = await db.select(table, data.select.condition)
         // New entrie in the DB
         if(res.rows.length == 0){
-            insertEntry(data.insert, table)
-            updates.push(entrie)
+            await insertEntry(data.insert, table)
             return
         }
         // Update entry
         if(Number(res.rows[0].chapter) < Number(entrie.chapter)){
-            updateEntry(data.update, table)
+            await updateEntry(data.update, table)
             if (res.rows[0].publish)
                 updates.push(entrie)
         }

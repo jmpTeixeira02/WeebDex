@@ -22,6 +22,7 @@ const events = eventsInit(db)
 const commands = commandsInit(db)
 const messageSender = messageSenderInit(client, db)
 
+import rpi from '../scrapper/rpi.mjs'
 
 client.once(Events.ClientReady, async c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
@@ -30,6 +31,7 @@ client.once(Events.ClientReady, async c => {
 
 	db.init(manwhaOptions.table, dbTableOptions.discord.table)
 
+	let date
 	const looper = async () => {
 		const res = await events.webScraping(
 			manwhaOptions.table.name, 
@@ -38,6 +40,16 @@ client.once(Events.ClientReady, async c => {
 		for (const result of res){
 			await messageSender.sendMessage(result, dbTableOptions.discord.table.name)
 		}
+
+		// TEMPORARY
+		const rpiData = await rpi()
+		
+		if ( (rpiData && date == undefined) || (rpiData && rpiData.pubDate > date)){
+			date = Date.parse(rpiData.pubDate)
+			client.users.send('179334253002227712', rpiData.link)
+		}
+		// TEMPORARY
+
 		setTimeout(looper, 1000*60*10);
 	}
 	looper()

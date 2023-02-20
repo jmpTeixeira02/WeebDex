@@ -93,9 +93,31 @@ async function update(table, update, condition){
     return [res, error]
 }
 
+async function remove(table, condition){
+    console.log("AAAAA")
+    const conditionArr = Object.keys(condition)
+    const where = conditionArr.map( (e, idx) =>{
+        idx++
+        return `${e} = $${idx}`
+    }).join()
+
+    const [res, error] = await tryCatchHandler(
+        async() => {
+            return await client.query(
+                `DELETE FROM ${table} WHERE ${where}`,
+                Object.values(condition)
+            )}
+    )
+    console.log(res)
+    return [res, error]
+}
+
+
+
 async function close(){
     await client.end()
     console.log("Connection Finished!")
 }
+
 
 export default {init, insert, select, update, close}
