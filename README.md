@@ -13,6 +13,9 @@ If a new chapter is found, the bot notifies the users by sending a message in [D
 
 Currently all the data is being stored in [PostgreSQL](https://www.postgresql.org/)
 
+## Usage
+In order to use this application you need to fill config.mjs in resources/config.mjs with the asked values
+
 ## Features
 - **Current Channel** - Displays the current announcement channel
 - **Set Channel** - Set the selected channel to be the new announcement channel
